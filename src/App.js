@@ -1,15 +1,19 @@
 import React from "react";
 import Main from "./components/Main";
 import "./App.css";
-
+import Wrapper from "./components/wrapper";
+import Header from "./components/header"
 function App() {
   return (
     <div className="App">
       <div className="wrapper">
         <div className="header">
-          <h1>Employee Directory</h1>
+
         </div>
-        <Main />
+        <Wrapper>
+          <Header />
+          <Main />
+        </Wrapper>
       </div>
     </div>
   );
