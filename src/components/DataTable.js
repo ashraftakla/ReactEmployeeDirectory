@@ -1,12 +1,41 @@
-import React, { useContext } from "react";
+import React from "react";
 import DataBody from "./DataBody.js";
-import DataAreaContext from "../utils/DataAreaContext";
+// import DataAreaContext from "../utils/DataAreaContext";
 
-const DataTable = () => {
-  const context = useContext(DataAreaContext);
+function DataTable({ headings, handleSort, users }) {
+  // const context = useContext(DataAreaContext);
 
   return (
 
+    // <div className="datatable mt-5">
+    //   <table
+    //     id="table"
+    //     className="table table-striped table-hover table-condensed"
+    //   >
+    //     <thead>
+    //       <tr>
+    //         {context.developerState.headings.map(({ name, width }) => {
+    //           return (
+    //             <th
+    //               className="col"
+    //               key={name}
+    //               style={{ width }}
+    //               onClick={() => {
+    //                 context.handleSort(name.toLowerCase());
+    //                 context.handleSort(name);
+    //               }}
+    //             >
+    //               {name}
+    //               <span className="pointer"></span>
+    //             </th>
+    //           );
+    //         })}
+    //       </tr>
+    //     </thead>
+
+    //     <DataBody />
+    //   </table>
+    // </div>
     <div className="datatable mt-5">
       <table
         id="table"
@@ -14,16 +43,15 @@ const DataTable = () => {
       >
         <thead>
           <tr>
-            {context.developerState.headings.map(({ name, width }) => {
+            {headings.map(({ name, width }) => {
               return (
                 <th
                   className="col"
                   key={name}
                   style={{ width }}
-                // onClick={() => {
-                //   //   // context.handleSort(name.toLowerCase());
-                //   context.handleSort(name);
-                // }}
+                  onClick={() => {
+                    handleSort(name.toLowerCase());
+                  }}
                 >
                   {name}
                   <span className="pointer"></span>
@@ -33,7 +61,7 @@ const DataTable = () => {
           </tr>
         </thead>
 
-        <DataBody />
+        <DataBody users={users} />
       </table>
     </div>
   );
